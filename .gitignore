@@ -13,4 +13,5 @@
 
 ###> custom ###
 .idea/
+*.bak
 ###< custom ###
