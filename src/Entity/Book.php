@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="book", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_CBE5A331989D9B62", columns={"slug"})}, indexes={@ORM\Index(name="IDX_CBE5A331F675F31B", columns={"author_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Book
 {
@@ -162,11 +163,21 @@ class Book
     {
         return $this->createdAt;
     }
-
+    
+ 
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
+        
+        return $this;
+    }
+    // Life cycle Callback for createdAt
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtInit(): self
+    {
+        $this->setCreatedAt(new \DateTime());
         return $this;
     }
 
@@ -174,11 +185,21 @@ class Book
     {
         return $this->updatedAt;
     }
+    
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
+        return $this;
+    }
+    // Life cycle Callback for updatedAt
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtInit(): self
+    {
+        $this->setUpdatedAt(new \DateTime());
         return $this;
     }
 
