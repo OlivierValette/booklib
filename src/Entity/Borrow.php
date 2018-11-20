@@ -1,6 +1,6 @@
 <?php
 
-namespace 'App\Entity';
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,7 +36,7 @@ class Borrow
     private $dateEnd;
 
     /**
-     * @var \Book
+     * @var Book
      *
      * @ORM\ManyToOne(targetEntity="Book")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Borrow
     private $book;
 
     /**
-     * @var \Box
+     * @var Box
      *
      * @ORM\ManyToOne(targetEntity="Box")
      * @ORM\JoinColumns({
@@ -56,7 +56,7 @@ class Borrow
     private $boxTo;
 
     /**
-     * @var \Box
+     * @var Box
      *
      * @ORM\ManyToOne(targetEntity="Box")
      * @ORM\JoinColumns({
@@ -66,7 +66,7 @@ class Borrow
     private $boxFrom;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -74,6 +74,83 @@ class Borrow
      * })
      */
     private $user;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDateStart(): ?\DateTimeInterface
+    {
+        return $this->dateStart;
+    }
+
+    public function setDateStart(\DateTimeInterface $dateStart): self
+    {
+        $this->dateStart = $dateStart;
+
+        return $this;
+    }
+
+    public function getDateEnd(): ?\DateTimeInterface
+    {
+        return $this->dateEnd;
+    }
+
+    public function setDateEnd(?\DateTimeInterface $dateEnd): self
+    {
+        $this->dateEnd = $dateEnd;
+
+        return $this;
+    }
+
+    public function getBook(): ?Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(?Book $book): self
+    {
+        $this->book = $book;
+
+        return $this;
+    }
+
+    public function getBoxTo(): ?Box
+    {
+        return $this->boxTo;
+    }
+
+    public function setBoxTo(?Box $boxTo): self
+    {
+        $this->boxTo = $boxTo;
+
+        return $this;
+    }
+
+    public function getBoxFrom(): ?Box
+    {
+        return $this->boxFrom;
+    }
+
+    public function setBoxFrom(?Box $boxFrom): self
+    {
+        $this->boxFrom = $boxFrom;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 
 
 }

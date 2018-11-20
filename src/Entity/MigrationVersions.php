@@ -1,6 +1,6 @@
 <?php
 
-namespace 'App\Entity';
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,6 +20,11 @@ class MigrationVersions
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $version;
+
+    public function getVersion(): ?string
+    {
+        return $this->version;
+    }
 
 
 }
