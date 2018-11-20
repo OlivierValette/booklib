@@ -4,19 +4,27 @@ namespace App\Controller;
 
 use App\Entity\Author;
 use App\Entity\Book;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class DefaultController
+ * @package App\Controller
+ * @Route("/default")
+ */
 class DefaultController extends BaseController
 {
     /**
-     * @Route("/default/{lastname}", name="default")
+     * @Route("/{lastname}", name="default")
      */
-    public function index(string $lastname)
+    public function index(string $lastname, Request $request)
     {
         $author = $this->getDoctrine()
             ->getRepository(Author::class)
             ->findOneBy(['lastname' => $lastname]);
+        
+        echo $request->query->get('test');
         
         if($author) {
             return new Response($author->getFirstname() .' '. $author->getLastname());
