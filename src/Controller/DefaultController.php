@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Author;
+use App\Entity\Book;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,9 +19,17 @@ class DefaultController extends BaseController
             ->findOneBy(['lastname' => $lastname]);
         
         if($author) {
-            return new Response($author->getFirstname() . $author->getLastname());
+            return new Response($author->getFirstname() .' '. $author->getLastname());
         } else {
-            return new Response('404 - Not found');
+            throw $this->createNotFoundException("Auteur introuvable.");
         }
+    }
+    
+    /**
+     * @Route("/book/{id}", name="show-book")
+     */
+    public function showBook(Book $book)
+    {
+        return new Response($book->getTitle());
     }
 }
