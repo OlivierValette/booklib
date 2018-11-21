@@ -19,6 +19,15 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
         $book->setImage('hpelcdf.jpg');
         $book->setSlug('harry-potter-et-la-coupe-de-feu');
         $manager->persist($book);
+    
+        $book = new Book();
+        $book->setTitle("Harry Potter à l'école des sorciers");
+        $book->setAuthor($this->getReference('rowling'));
+        $book->addCategory($this->getReference('roman'));
+        $book->addCategory($this->getReference('fantastique'));
+        $book->setImage('hpalds.jpg');
+        $book->setSlug('harry-potter-a-l-ecole-des-sorciers');
+        $manager->persist($book);
 
         $manager->flush();
     }

@@ -7,7 +7,7 @@
 {% block body %}
 
     <h1>{{ book.title }}</h1>
-    {#<img src="" alt="{{ book.title }}">#}
+    <img src="{{ asset('uploads/' ~ book.image) }}" alt="{{ book.title }}">
     <ul>
         <li>Auteur : {{ book.author.fullname }}</li>
         <li>Catégorie(s) :</li>
@@ -18,6 +18,18 @@
                     {{ category.name }}
                 </a>
             </li>
+            {% endfor %}
+        </ul>
+        <li>Livres du même auteur :</li>
+        <ul>
+            {% for otherbook in otherbooks %}
+            <li>
+                <a href="{{ path('book_show', {'slug': otherbook.slug }) }}">
+                    {{ otherbook.title }}
+                </a>
+            </li>
+            {% else %}
+                <li>(Aucun)</li>
             {% endfor %}
         </ul>
     </ul>

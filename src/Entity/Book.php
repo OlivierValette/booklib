@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Book
  *
  * @ORM\Table(name="book", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_CBE5A331989D9B62", columns={"slug"})}, indexes={@ORM\Index(name="IDX_CBE5A331F675F31B", columns={"author_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Book
