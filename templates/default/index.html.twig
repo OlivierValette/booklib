@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block header %}
-    {# get parent header content in spite of override #}
+    {# get parent header content, in spite of override #}
     {{  parent() }}
     <header>
         *** index header *** Fine thank you.
@@ -15,7 +15,9 @@
     <ul>
         {% for book in author.books %}
             <li>
-                {{ book.title }}
+                <a href="{{ path('book_show', {'slug': book.slug }) }}">
+                    {{ book.title }}
+                </a>
             </li>
         {% endfor %}
     </ul>
