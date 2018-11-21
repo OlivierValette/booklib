@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block header %}
+    {# get parent header content in spite of override #}
+    {{  parent() }}
+    <header>
+        Fine thank you.
+    </header>
+{% endblock %}
+{% block body %}
+    <div>
+        Hello world!
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

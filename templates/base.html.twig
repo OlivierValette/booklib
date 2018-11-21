@@ -6,7 +6,19 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block header %}
+            <header>
+                *** base header *** How are you?
+            </header>
+        {% endblock %}
+        {% block body %}
+        {% endblock %}
+        {% block footer %}
+            <footer>
+                *** base footer ***
+            </footer>
+        {% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
