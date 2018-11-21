@@ -76,7 +76,7 @@ class Book
     /**
      * @var Author
      *
-     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\ManyToOne(targetEntity="Author", inversedBy="books")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      * })

@@ -4,13 +4,21 @@
     {# get parent header content in spite of override #}
     {{  parent() }}
     <header>
-        Fine thank you.
+        *** index header *** Fine thank you.
     </header>
 {% endblock %}
 {% block body %}
-    <div>
-        Hello world!
-    </div>
+    <h1>
+        {{ author.fullname }}
+    </h1>
+    <h2>Liste des livres :</h2>
+    <ul>
+        {% for book in author.books %}
+            <li>
+                {{ book.title }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
 {% block footer %}
 {% endblock %}
