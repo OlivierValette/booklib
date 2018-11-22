@@ -21,4 +21,11 @@ class CategoryController extends BaseController
             'category' => $category,
         ]);
     }
+    
+    public function dropDown()
+    {
+        $categories = $this->getDoctrine()->getRepository(Category::class)
+            ->findBy([], ['name' => 'ASC']);
+        return $this->render('category/dropdown.html.twig', ['categories' => $categories]);
+    }
 }

@@ -43,20 +43,7 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Catégories <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <!--
-                                    {#
-                                    {% for category in categories %}
-                                        <li>
-                                            <a class="dropdown-item"
-                                               href="{{ path('category_show', {'id': category.id }) }}">
-                                                {{ category.name }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                    #}
-                                    -->
-                                </ul>
+                                    {{ render(controller('App\\Controller\\CategoryController::dropDown')) }}
                             </li>
                         </ul>
                         <ul class="navbar-nav">
