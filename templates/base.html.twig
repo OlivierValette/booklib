@@ -9,6 +9,10 @@
     </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    {% endblock %}
+
 </head>
 
 <body>
@@ -87,7 +91,7 @@
     {% endblock %}
 
     {% block javascripts %}
-        <script src="../dist/main.js"></script>
+        <script src="{{ asset('build/app.js') }}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initBooksMap"></script>
     {% endblock %}
 
