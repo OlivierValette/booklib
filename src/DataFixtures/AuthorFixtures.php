@@ -3,33 +3,37 @@
 namespace App\DataFixtures;
 
 use App\Entity\Author;
+use App\Entity\Book;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 
 class AuthorFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
         $authors = [
-            ["Austin", "Jane"],
-            ["Hugo", "Victor"],
-            ["Camus", "Albert"],
-            ["Vian", "Boris"],
-            ["Rowling", "J.K."],
-            ["Goscinny", "René"],
-            ["Flaubert", "Gustave"],
-            ["Zola", "Emile"],
-            ];
-    
-        foreach ($authors as $author) {
+            ["J.K.", "Rowling"],
+            ["René", "Goscinny"],
+            ["Gustave", "Flaubert"],
+            ["Emile", "Zola"],
+        ];
+        foreach ($authors as $key => $author) {
             $aut = new Author();
-            $aut->setLastname($author[0]);
-            $aut->setFirstname($author[1]);
+            $aut->setFirstname($author[0]);
+            $aut->setLastname($author[1]);
             $manager->persist($aut);
-            // reference for dependencies
-            $this->setReference(strtolower($author[0]), $aut);
+            $this->setReference('author-' . ($key + 1), $aut);
         }
-
+        $faker = Factory::create('fr_FR');
+        for($i = 5; $i < 100; $i++) {
+            $faker->seed($i);
+            $author = new Author();
+            $author->setFirstname($faker->firstName);
+            $author->setLastname($faker->lastName);
+            $manager->persist($author);
+            $this->setReference('author-' . $i, $author);
+        }
         $manager->flush();
     }
 }
