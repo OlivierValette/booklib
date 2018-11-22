@@ -1,14 +1,35 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+import $ from 'jquery';
+import bootstrap from 'bootstrap';
+import { MarkerClusterer } from 'marker-precluster';
 
-// any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.css');
+import '../css/app.scss';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// var $ = require('jquery');
+var booksMap = null;
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+function initBooksMap() {
+    var paris = {lat: 48.856614, lng: 2.352222};
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updateBooksMapCenter);
+    }
+    booksMap = new google.maps.Map(document.getElementById('map-books'), {
+        zoom: 4,
+        center: paris
+    });
+
+    $.getJSON("data.json", function (data) {
+        var markers = [];
+        for (var i = 0; i < 100; i++) {
+            var dataPhoto = data.photos[i];
+            var latLng = new google.maps.LatLng(dataPhoto.latitude,dataPhoto.longitude);
+            var marker = new google.maps.Marker({position: latLng});
+            markers.push(marker);
+        }
+
+        var markerCluster = new MarkerClusterer(booksMap, markers, {imagePath: 'images/m'});
+    });
+}
+window.initBooksMap = initBooksMap;
+
+function updateBooksMapCenter(position) {
+    booksMap.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
+}

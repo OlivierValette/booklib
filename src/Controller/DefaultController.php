@@ -11,12 +11,19 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class DefaultController
  * @package App\Controller
- * @Route("/default")
  */
 class DefaultController extends BaseController
 {
     /**
-     * @Route("/{lastname}", name="default")
+     * @Route("/", name="homepage")
+     */
+    public function homepage()
+    {
+        return $this->render('default/homepage.html.twig');
+    }
+    
+    /**
+     * @Route("/default/{lastname}", name="default")
      */
     public function index(string $lastname, Request $request)
     {
@@ -34,7 +41,7 @@ class DefaultController extends BaseController
     }
     
     /**
-     * @Route("/book/{id}", name="show-book")
+     * @Route("/default/book/{id}", name="show-book")
      */
     public function showBook(Book $book)
     {
