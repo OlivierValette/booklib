@@ -21,7 +21,7 @@
         <header class="container">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ path('homepage') }}">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-book fa-green fa-stack-1x"></i>
@@ -34,16 +34,28 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarDefault">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="#">Accueil</a></li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path('homepage') }}">
+                                    Accueil
+                                </a>
+                            </li>
                             <li class="nav-item"><a class="nav-link" href="#">Concept</a></li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Catégories <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Roman</a></li>
-                                    <li><a class="dropdown-item" href="#">SF</a></li>
-                                    <li><a class="dropdown-item" href="#">Histoire</a></li>
-                                    <li><a class="dropdown-item" href="#">Thriller</a></li>
+                                    <!--
+                                    {#
+                                    {% for category in categories %}
+                                        <li>
+                                            <a class="dropdown-item"
+                                               href="{{ path('category_show', {'id': category.id }) }}">
+                                                {{ category.name }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    #}
+                                    -->
                                 </ul>
                             </li>
                         </ul>

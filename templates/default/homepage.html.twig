@@ -58,34 +58,7 @@
 
                     {% for book in books %}
                         <div class="col-sm-6 col-md-4">
-
-                            <div class="card">
-                                <img class="card-img-top"
-                                     src="{{ asset('uploads/' ~ book.image) }}"
-                                     alt="{{ book.title }}">
-                                <div class="card-body">
-                                    <h3>{{ book.title }}</h3>
-                                    <div class="book-infos">
-                                        <span class="label label-info">
-                                            <i class="fa fa-user"></i> {{ book.author.fullname }}
-                                        </span>
-                                        {% for category in book.category %}
-                                            <a href="{{ path('category_show', {'id': category.id }) }}">
-                                                <span class="label label-success">
-                                                    <i class="fa fa-tag"></i> {{ category.name }}
-                                                </span>
-                                            </a>
-                                        {% endfor %}
-                                    </div>
-                                    <p>
-                                        <a href="{{ path('book_show', {'slug': book.slug }) }}"
-                                           class="btn btn-primary" role="button">
-                                            <i class="fa fa-eye"></i> Voir plus
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-
+                            {% include 'book/card.html.twig' with {'book': book} only %}
                         </div>
                     {% endfor %}
 

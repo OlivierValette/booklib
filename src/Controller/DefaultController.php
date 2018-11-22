@@ -21,7 +21,7 @@ class DefaultController extends BaseController
     {
         $books = $this->getDoctrine()
             ->getRepository(Book::class)
-            ->findLastBooks(6);
+            ->findLast(6);
         return $this->render('default/homepage.html.twig', [
             "books" => $books,
             ]);
