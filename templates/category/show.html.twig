@@ -5,17 +5,19 @@
 {% endblock %}
 
 {% block body %}
-
-    <h1>{{ category.name }}</h1>
-    <h2>Liste des livres de la catégorie :</h2>
-    <ul>
-        {% for book in category.book %}
-            <li>
-                <a href="{{ path('book_show', {'slug': book.slug }) }}">
-                    {{ book.title }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-
+    <section class="container">
+        <div class="jumbotron">
+            <h1>{{ category.name }}</h1>
+            <h2>Liste des livres de la catégorie :</h2>
+            <ul>
+                {% for book in category.book %}
+                    <li>
+                        <a href="{{ path('book_show', {'slug': book.slug }) }}">
+                            {{ book.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
 {% endblock %}

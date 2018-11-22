@@ -15,7 +15,7 @@ class BookController extends BaseController
     /**
      * @param $book
      * @Route("/show/{slug}", name="book_show")
-     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function show(Book $book)
     {

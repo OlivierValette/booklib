@@ -45,6 +45,11 @@
                                    aria-expanded="false">Catégories <span class="caret"></span></a>
                                     {{ render(controller('App\\Controller\\CategoryController::dropDown')) }}
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ path('author_new') }}" class="nav-link">
+                                    Ajouter un auteur
+                                </a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
