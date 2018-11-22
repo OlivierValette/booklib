@@ -19,7 +19,12 @@ class DefaultController extends BaseController
      */
     public function homepage()
     {
-        return $this->render('default/homepage.html.twig');
+        $books = $this->getDoctrine()
+            ->getRepository(Book::class)
+            ->findLastBooks(6);
+        return $this->render('default/homepage.html.twig', [
+            "books" => $books,
+            ]);
     }
     
     /**
@@ -31,7 +36,7 @@ class DefaultController extends BaseController
             ->getRepository(Author::class)
             ->findOneBy(['lastname' => $lastname]);
         
-        echo $request->query->get('test');
+        // echo $request->query->get('test');
         
         if($author) {
             return $this->render("default/index.html.twig", ["author" => $author]);
