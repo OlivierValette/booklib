@@ -92,5 +92,12 @@ class Author
     {
         return $this->getFirstname() . " " . $this->getLastname();
     }
-
+    
+    
+    public function __toString()
+    {
+        return $this->getFullname();
+    }
+    
+    
 }

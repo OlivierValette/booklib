@@ -1,0 +1,29 @@
+easy_admin:
+    site_name: 'Administration BookLib'
+    entities:
+        # List the entity class name you want to manage
+        Author:
+            class: App\Entity\Author
+            label: 'Auteur'
+            list:
+                title: 'Auteurs'
+        Book:
+            class: App\Entity\Book
+            label: 'Livre'
+            list:
+                title: 'Livres'
+                fields:
+                    - { property: 'title'}
+                    - { property: 'image', type: 'image', base_path: '%app.path.uploads_dir%' }
+        Borrow:
+            class: App\Entity\Borrow
+            label: 'Emprunts'
+        Box:
+            class: App\Entity\Box
+            label: 'Boîtes'
+        Category:
+            class: App\Entity\Category
+            label: 'Genres'
+        User:
+            class: App\Entity\User
+            label: 'Utilisateurs'
