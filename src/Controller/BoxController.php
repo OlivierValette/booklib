@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Box;
 use App\Form\BoxType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,7 @@ class BoxController extends AbstractController
 {
     /**
      * @Route("/", name="box_index", methods="GET")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(): Response
     {
