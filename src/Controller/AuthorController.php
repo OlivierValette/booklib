@@ -3,8 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Author;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Form\AuthorType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,16 +16,14 @@ class AuthorController extends BaseController
 {
     /**
      * @Route("/new", name="author_new")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function new(Request $request)
     {
         $author = new Author();
         
-        $form = $this->createFormBuilder($author)
-            ->add('firstName', TextType::class, ['label' => 'Prénom'])
-            ->add('LastName', TextType::class, ['label' => 'Nom'])
-            ->add('save', SubmitType::class, ['label' => 'Créer'])
-            ->getForm();
+        $form = $this->createForm(AuthorType::class, $author);
         
         $form->handleRequest($request);
         
