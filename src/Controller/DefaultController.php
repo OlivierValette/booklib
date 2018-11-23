@@ -33,9 +33,13 @@ class DefaultController extends BaseController
             ]);
     }
     
+    /*
+    
     /**
      * @Route("/default/{lastname}", name="default")
      */
+    
+    /*
     public function index(string $lastname, Request $request)
     {
         $author = $this->getDoctrine()
@@ -54,8 +58,12 @@ class DefaultController extends BaseController
     /**
      * @Route("/default/book/{id}", name="show-book")
      */
+    
+    /*
     public function showBook(Book $book)
     {
         return new Response($book->getTitle());
     }
+    
+    */
 }

@@ -1,0 +1,27 @@
+{# templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="jumbotron">
+
+
+        {{ form_start(form) }}
+            {{ form_row(form.firstname) }}
+            {{ form_row(form.lastname) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.plainPassword.first) }}
+            {{ form_row(form.plainPassword.second) }}
+
+            <button class="btn btn-lg btn-primary" type="submit">
+                Créer un compte
+            </button>
+        {{ form_end(form) }}
+
+    </div>
+</div>
+
+{% endblock %}

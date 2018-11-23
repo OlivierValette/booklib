@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -36,7 +37,13 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
-
+    
+    /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+    
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
@@ -51,7 +58,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getFirstname(): string
+    public function getFirstname(): ?string
     {
         return $this->firstname;
     }
@@ -69,7 +76,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getLastname(): string
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
@@ -84,7 +91,7 @@ class User implements UserInterface
         return $this;
     }
     
-        public function getEmail(): ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -124,6 +131,24 @@ class User implements UserInterface
 
         return $this;
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    
+    /**
+     * @param mixed $plainPassword
+     * @return User
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
 
     /**
      * @see UserInterface
@@ -155,5 +180,10 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+    
+    public function getFullName(): string
+    {
+        return $this->getFirstname() . ' ' . $this->getLastname();
     }
 }
