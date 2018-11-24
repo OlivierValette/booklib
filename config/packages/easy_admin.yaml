@@ -59,12 +59,14 @@ easy_admin:
                 title: 'Livre (#%%entity_id%%)'
             form:
                 fields:
-                    - { type: 'group', columns: 5, icon: 'book', label: 'Basic information' }
+                    - { type: 'group', columns: 5, icon: 'book', label: 'Informations de base' }
                     - { property: 'title', label: 'Titre' }
                     - { property: 'reference', label: 'Référence' }
                     - { property: 'slug', label: 'Slug' }
                     - { property: 'synopsis', label: 'Synopsis' }
+                    - { type: 'group', label: 'Informations complémentaires' }
                     - { property: 'author', label: 'Auteur' }
+                    - { property: 'category', type_options: { expanded: true, multiple: true } }
                     - { type: 'group', columns: 6 , icon: 'image', label: 'Couverture' }
                     - { property: 'imageFile', type: 'vich_image', label: 'Couverture' }
                 title: 'Créer ou modifier un livre'

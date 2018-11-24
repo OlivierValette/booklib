@@ -6,7 +6,7 @@
 parameters:
     locale: 'fr'
     app.path.uploads_dir: uploads
-    app.path.product_images: uploads
+    app.path.book_images: uploads
 
 services:
     # default configuration for services in *this* file

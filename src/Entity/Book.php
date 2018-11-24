@@ -49,7 +49,7 @@ class Book
     private $image;
     
     /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="book_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
