@@ -22,10 +22,11 @@ class BookController extends BaseController
     {
         $books = $this->getDoctrine()->getRepository(Book::class)->findAll();
         
-        // test if API call
         if ($request->isXmlHttpRequest()) {
+            // if API call
             return $this->json($books);
         } else {
+            // if browser
             return $this->render('book/index.html.twig', [
                'books' => $books
             ]);

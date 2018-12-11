@@ -5,40 +5,40 @@
 {% block body %}
     <div class="container">
 
-    <h1>Liste des livres</h1>
+        <h1 class="mt-4">Liste des livres</h1>
 
-    <table class="table table-bordered table-hover table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Référence</th>
-                <th>Image</th>
-                <th>Synopsis</th>
-                <th>Slug</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for book in books %}
-            <tr>
-                <td>{{ book.id }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.reference }}</td>
-                <td>{{ book.image }}</td>
-                <td>{{ book.synopsis }}</td>
-                <td>{{ book.slug }}</td>
-                <td>
-                    <a href="{{ path('book_show', {'slug': book.slug}) }}">Détail</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Référence</th>
+                    <th>Image</th>
+                    <th>Synopsis</th>
+                    <th>Slug</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.reference }}</td>
+                    <td>{{ book.image }}</td>
+                    <td>{{ book.synopsis }}</td>
+                    <td>{{ book.slug }}</td>
+                    <td>
+                        <a href="{{ path('book_show', {'slug': book.slug}) }}">Détail</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
     </div>
 {% endblock %}
