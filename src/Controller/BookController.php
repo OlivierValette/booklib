@@ -20,7 +20,16 @@ class BookController extends BaseController
      */
     public function index(Request $request): Response
     {
-        $books = $this->getDoctrine()->getRepository(Book::class)->findAll();
+        // request with array output for json API
+        // (to avoid serialization problems)
+        $books = $this->getDoctrine()
+            ->getRepository(Book::class)
+            ->createQueryBuilder('b')
+            ->select('b', 'a', 'c')
+            ->join('b.author', 'a')
+            ->innerJoin('b.category', 'c')
+            ->getQuery()
+            ->getArrayResult();
         
         if ($request->isXmlHttpRequest()) {
             // if API call
