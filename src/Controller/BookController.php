@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -12,6 +14,24 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class BookController extends BaseController
 {
+    
+    /**
+     * @Route("/", name="book_list", methods="GET")
+     */
+    public function index(Request $request): Response
+    {
+        $books = $this->getDoctrine()->getRepository(Book::class)->findAll();
+        
+        // test if API call
+        if ($request->isXmlHttpRequest()) {
+            return $this->json($books);
+        } else {
+            return $this->render('book/index.html.twig', [
+               'books' => $books
+            ]);
+        }
+    }
+    
     /**
      * @param $book
      * @Route("/show/{slug}", name="book_show")
